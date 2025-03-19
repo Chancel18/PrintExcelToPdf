@@ -1,0 +1,6 @@
+@PrintExcelToPdf_HostAddress = http://localhost:5025
+
+GET {{PrintExcelToPdf_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
