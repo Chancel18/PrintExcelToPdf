@@ -39,12 +39,15 @@ namespace PrintExcelToPdf.Controllers
                 using (var package = new ExcelPackage(new MemoryStream(fileBytes)))
                 {
                     var worksheet = package.Workbook.Worksheets[0];
+                    worksheet.Cells["A6"].Value = jsonData["product"];
                     worksheet.Cells["B13"].Value = jsonData["transDate"];
                     worksheet.Cells["B15"].Value = jsonData["agencyName"];
                     worksheet.Cells["C17"].Value = jsonData["remarks"];
                     worksheet.Cells["C19"].Value = jsonData["dateStart"];
                     worksheet.Cells["F19"].Value = jsonData["dateEnd"];
                     worksheet.Cells["C21"].Value = jsonData["amount"];
+
+                    worksheet.Calculate();
 
                     var stream = new MemoryStream();
 
